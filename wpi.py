@@ -3,7 +3,6 @@ from tkinter import *
 import string
 import random
 
-
 def code():
     #Top Level
 
@@ -22,8 +21,24 @@ def code():
 
     labelb=Label(top, text="%s" %random_code, font=("Courier New",30))
     labelb.pack()
+    
+##########^^^^^#___THIS_MUST_BE_AT_THE_TOP_OF_PROGRAM___#^^^^^#############
 
-####################___MAIN_LEVEL___#######################################
+
+
+
+
+
+#ENTER NEW CODE HERE
+
+
+
+
+
+
+
+####################___ROOT_LEVEL___#######################################
+#########___THIS_MUST_BE_AT_THE_BOTTOM_OF_PROGRAM___#######################
 root=Tk()
 
 root.title("Security Clearence")
