@@ -1,0 +1,10 @@
+docopt
+git-py
+infi.execute
+infi.recipe.python
+infi.recipe.template.version
+pip
+setuptools
+six
+wheel
+zc.buildout>=2.9.2

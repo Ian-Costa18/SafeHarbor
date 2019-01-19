@@ -1,0 +1,8 @@
+[console_scripts]
+infi-git-short-version = infi.os_info.scripts:git_short_version
+infi-git-version = infi.os_info.scripts:git_version
+infi-uname = infi.os_info.scripts:uname
+
+[gui_scripts]
+
+

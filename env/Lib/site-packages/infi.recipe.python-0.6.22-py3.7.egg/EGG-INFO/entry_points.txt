@@ -1,0 +1,5 @@
+[zc.buildout]
+default = infi.recipe.python.download:Recipe
+download = infi.recipe.python.download:Recipe
+pack = infi.recipe.python.pack:Recipe
+

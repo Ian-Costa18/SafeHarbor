@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: infi.execute
+Version: 0.1.8
+Summary: wrapper library for executing system commands from Python
+Home-page: https://github.com/Infinidat/infi.execute
+Author: Arnon Yaari
+Author-email: arnony@infinidat.com
+License: BSD
+Description: wrapper library for executing system commands from Python
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

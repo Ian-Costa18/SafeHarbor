@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: infi.os-info
+Version: 0.1.11
+Summary: module for getting os information
+Home-page: https://github.com/Infinidat/infi.os_info
+Author: Arnon Yaari
+Author-email: arnony@infinidat.com
+License: BSD
+Description: module for getting os information
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

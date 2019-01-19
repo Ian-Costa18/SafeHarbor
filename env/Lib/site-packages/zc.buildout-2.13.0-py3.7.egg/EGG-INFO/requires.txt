@@ -1,0 +1,9 @@
+setuptools>=8.0
+
+[test]
+bobo==2.3.0
+manuel
+zc.recipe.deployment
+zc.zdaemonrecipe
+zdaemon
+zope.testing

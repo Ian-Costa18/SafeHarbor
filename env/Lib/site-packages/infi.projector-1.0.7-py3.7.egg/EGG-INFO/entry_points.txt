@@ -1,0 +1,19 @@
+[console_scripts]
+projector = infi.projector.scripts:projector
+
+[gui_scripts]
+
+
+[projector_command_plugins]
+console_scripts = infi.projector.plugins.builtins.console_scripts:ConsoleScriptsPlugin
+envenv = infi.projector.plugins.builtins.devenv:DevEnvPlugin
+gui_scripts = infi.projector.plugins.builtins.gui_scripts:GuiScriptsPlugin
+isolated_pyton = infi.projector.plugins.builtins.isolated_python:IsolatedPythonPlugin
+js_requirements = infi.projector.plugins.builtins.js_requirements:JSRequirementsPlugin
+package_data = infi.projector.plugins.builtins.package_data:PackageDataPlugin
+package_scripts = infi.projector.plugins.builtins.package_scripts:PackageScriptsPlugin
+repository = infi.projector.plugins.builtins.repository:RepositoryPlugin
+requirements = infi.projector.plugins.builtins.requirements:RequirementsPlugin
+submodules = infi.projector.plugins.builtins.submodules:SubmodulePlugin
+version = infi.projector.plugins.builtins.version:VersionPlugin
+

@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: infi.recipe.python
+Version: 0.6.22
+Summary: a recipe for downloading and packing portable builds of Python
+Home-page: https://github.com/Infinidat/infi.recipe.python
+Author: Arnon Yaari
+Author-email: arnony@infinidat.com
+License: BSD
+Description: when building large applications in Python, you want to embed the interpreter within your app. This recipe lets you do it
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

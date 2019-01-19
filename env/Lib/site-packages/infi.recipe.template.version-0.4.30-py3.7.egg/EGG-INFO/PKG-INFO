@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: infi.recipe.template.version
+Version: 0.4.30
+Summary: 'an extension to collective.recipe.template'
+Home-page: https://github.com/Infinidat/infi.recipe.template.version
+Author: Arnon Yaari
+Author-email: arnony@infinidat.com
+License: BSD
+Description: None
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

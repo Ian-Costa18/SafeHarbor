@@ -1,0 +1,4 @@
+
+    [zc.buildout]
+    default = infi.recipe.template.version.recipe:Recipe
+    

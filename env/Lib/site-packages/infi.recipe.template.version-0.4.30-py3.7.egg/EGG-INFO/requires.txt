@@ -1,0 +1,6 @@
+collective.recipe.template
+git-py
+infi.execute
+infi.os_info
+setuptools
+zc.buildout

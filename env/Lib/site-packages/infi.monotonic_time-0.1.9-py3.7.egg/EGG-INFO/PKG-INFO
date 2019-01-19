@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: infi.monotonic-time
+Version: 0.1.9
+Summary: monotonic time
+Home-page: https://github.com/Infinidat/infi.monotonic_time
+Author: Arnon Yaari
+Author-email: arnony@infinidat.com
+License: BSD
+Description: monotonic time
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
