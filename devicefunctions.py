@@ -1,5 +1,5 @@
 import subprocess
-#import re
+import re
 
 # All names have been commented out since they weren't being used
 
@@ -10,9 +10,9 @@ def findDevices() :
 
     devices_str = subprocess.check_output(["devcon", "find", "*USB*"]).decode("utf-8")
     
-    #regex = r": .*"
+    regex = r": .*"
 
-    #devices_re = re.findall(regex, devices_str)
+    devices_re = re.findall(regex, devices_str)
 
     devices_lst = devices_str.split("\n")
 
@@ -23,14 +23,18 @@ def findDevices() :
         if index != len(devices_lst)-2:
             device_ids.append(i[:i.find(':')].strip())
 
-    ## Find device names in devices_re
-    #for string in devices_re:
-    #     Removes /r at the end of string
-    #    r = len(string)-1
-    #     Removes ': ' at the begining of string
-    #    device_names.append(string[2:r])
+    # Find device names in devices_re
+    for string in devices_re:
+        # Removes /r at the end of string
+        r = len(string)-1
+        # Removes ': ' at the begining of string
+        device_names.append(string[2:r])
 
-    return device_ids#, device_names
+    for index, name in enumerate(device_names):
+        if name == "USB Mass Storage Device":
+            del device_ids[index]
+
+    return device_ids
 
 def lockDevice(device_id):
     """ Runs locker.bat with device_id
@@ -60,3 +64,6 @@ def unlockDevice(device_id):
     unlocker = subprocess.Popen(["unlocker.bat ", device_id], stdout=subprocess.PIPE)
 
     return unlocker.stdout
+
+if __name__ == "__findDevices__":
+    findDevices

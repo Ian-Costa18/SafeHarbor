@@ -1,5 +1,5 @@
 from devicefunctions import findDevices, lockDevice, unlockDevice
-from smsclient import App, startclient
+from smsmessagingnogui import run
 from time import sleep
 
 def main():
@@ -9,6 +9,7 @@ def main():
 
     first_time = True
     locked_devices = []
+    smscheck = 0
 
     while True:
         hwid = findDevices()
@@ -25,26 +26,20 @@ def main():
                 for device in hwid:
                     # If there is a new device, lock it
                     if device not in baseline_hwid:
-                        while findDevices() == hwid:
+                        lockcheck = 0
+                        while device not in baseline_hwid and lockcheck <= 15:
+                            lockcheck += 1
                             lockDevice(device)
+                        if device in findDevices() and smscheck == 0:
+                            smsclient = run()
+                            smscheck = 1
+                        
                         baseline_hwid.append(device)
-                        locked_devices.append(device)
-
-                        smsclient = startclient()
-            # If sms auth is good:
-            try:
-                if smsclient.auth:
-                    for index, device in enumerate(locked_devices):
-                        while findDevices() != hwid:
-                            unlockDevice(device)
-                        del locked_devices[index]
-            except UnboundLocalError:
-                continue
-
+                        #locked_devices.append(device)
+                        
+                        
 
 if __name__ == "__main__":
     main()
-                   
-            
-
+                        
     
