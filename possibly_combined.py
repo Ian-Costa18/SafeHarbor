@@ -47,7 +47,7 @@ def code():
         .create(
         body="New device detected; please type in the code displayed on your screen.",
         from_='+17747736090',
-        to='+15089017299'
+        to=pineapple
     )
     print(message.sid)
 
