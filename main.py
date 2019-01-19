@@ -35,7 +35,9 @@ def main():
                             smscheck = 1
                         
                         baseline_hwid.append(device)
-                        #locked_devices.append(device)
+                        
+                    if smsclient == "Pass":
+                        unlockDevice('*')
                         
                         
 
