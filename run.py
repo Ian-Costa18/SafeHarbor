@@ -14,11 +14,12 @@ auth_token = '0cb8be0e4d5c9438cac8896e09e8e4dd'
 client = Client(account_sid, auth_token)
 message = client.messages \
     .create(
-    body="Are you trying to access a port? Y/N",
+    body="This is a test. Please reply with - " + randomnum,
     from_='+17747736090',
     to='+15089017299'
- )
+)
 print(message.sid)
+
 
 @app.route("/sms", methods=['GET', 'POST'])
 def incoming_sms():
@@ -29,16 +30,14 @@ def incoming_sms():
     # Start our TwiML response
     resp = MessagingResponse()
 
-    msg = messagereply.upper()
-
     # Determine the right reply for this message
-    if msg == "Y":
-        resp.message("This is a test. Please reply with - " + randomnum)
-        return str(resp)
-    elif msg == "n":
-        print(messagereply)
-        resp.message("Your ports are now locked.")
-        return str(resp)
+    if messagereply == str(randomnum):
+        resp.message("Thank you!")
+
+    else:
+        resp.message("Nice Try.")
+
+    return str(resp)
 
 
 if __name__ == "__main__":
