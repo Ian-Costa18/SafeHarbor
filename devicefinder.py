@@ -13,10 +13,12 @@ def findDevices() :
 
     device_ids, device_names = [],[]
 
-    for i in devices_lst:
-        if i.find("found") == -1 or i.split() == "":
+    # Find device IDs in devices_lst, delete last 2 entries (found message and new line)
+    for index, i in enumerate(devices_lst):
+        if index != len(devices_lst)-2:
             device_ids.append(i[:i.find(':')].strip())
 
+    # Find device names in devices_re
     for string in devices_re:
         # Removes /r at the end of string
         r = len(string)-1
