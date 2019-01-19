@@ -9,7 +9,6 @@ def run():
       random_num = ''.join(random_choice(string_digits) for i in range(5))
       print(random_num)
       loop_active = True
-      passorfail = "Fail"
       while loop_active:
           user_input = 0
           if user_input == 0:
@@ -36,20 +35,14 @@ def run():
                   if messagereply == str(random_num):
                       resp.message("Thank you!")
                       print(resp)
-                      passorfail = "Pass"
                       unlockDevice('*')
                       return str(resp)
 
                   elif messagereply != str(random_num):
                       resp.message("Nice Try.")
                       print(resp)
-                      passorfail = "Fail"
-                      return str(resp)
-
-          if __name__ == "__main__":
-              app.run()
-
-      return incoming_sms()
+                      return str(resp)  
+          app.run()
         
 
 if __name__ == "__main__":

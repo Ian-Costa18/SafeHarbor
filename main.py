@@ -23,6 +23,7 @@ def main():
         else:
             # Check if there's new device id's
             if hwid != baseline_hwid:
+                smsclient = None
                 for device in hwid:
                     # If there is a new device, lock it
                     if device not in baseline_hwid:
