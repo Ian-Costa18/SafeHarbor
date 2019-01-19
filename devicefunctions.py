@@ -30,9 +30,10 @@ def findDevices() :
         # Removes ': ' at the begining of string
         device_names.append(string[2:r])
 
-    for index, name in enumerate(device_names):
-        if name == "USB Mass Storage Device":
-            del device_ids[index]
+    for index, device in enumerate(device_ids):
+        if "VID" in device or "ROOT":
+            if "CH000001" not in device:
+                del device_ids[index]
 
     return device_ids
 

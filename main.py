@@ -22,25 +22,27 @@ def main():
 
         else:
             # Check if there's new device id's
+            lock_device = []
+            lockcheck = 0
             if hwid != baseline_hwid:
                 smsclient = None
                 for device in hwid:
                     # If there is a new device, lock it
                     if device not in baseline_hwid:
-                        lockcheck = 0
+                        lock_device.append(device)
                         while device not in baseline_hwid and lockcheck <= 15:
                             lockcheck += 1
                             lockDevice(device)
-                        if device in findDevices() and smscheck == 0:
-                            smsclient = run()
-                            smscheck = 1
-                        
+                            try:
+                                lock_device.remove(device)
+                            except ValueError:
+                                continue
                         baseline_hwid.append(device)
-                        
-                    if smsclient == "Pass":
-                        unlockDevice('*')
-                        
-                        
+
+                if lock_device == [] and smscheck == 0:
+                    smsclient = run()
+                    smscheck = 1
+
 
 if __name__ == "__main__":
     main()
