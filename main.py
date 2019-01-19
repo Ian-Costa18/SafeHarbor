@@ -1,4 +1,6 @@
 from devicefunctions import findDevices, lockDevice, unlockDevice
+from smsclient import App, startclient
+from time import sleep
 
 def main():
     """ Main file for *PROGRAM NAME HERE*
@@ -23,16 +25,21 @@ def main():
                 for device in hwid:
                     # If there is a new device, lock it
                     if device not in baseline_hwid:
-                        lockDevice(device)
+                        while findDevices() == hwid:
+                            lockDevice(device)
                         baseline_hwid.append(device)
                         locked_devices.append(device)
 
-                        #insert sms send
+                        smsclient = startclient()
             # If sms auth is good:
-            if True:
-                for index, device in enumerate(locked_devices):
-                    unlockDevice(device)
-                    del locked_devices[index]
+            try:
+                if smsclient.auth:
+                    for index, device in enumerate(locked_devices):
+                        while findDevices() != hwid:
+                            unlockDevice(device)
+                        del locked_devices[index]
+            except UnboundLocalError:
+                continue
 
 
 if __name__ == "__main__":
