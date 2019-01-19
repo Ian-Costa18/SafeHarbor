@@ -1,27 +1,40 @@
-from devicefinder import findDevices
-from lockunlock import lockDevice, unlockDevice
+from devicefunctions import findDevices, lockDevice, unlockDevice
 
-first_time = True
+def main():
+    """ Main file for *PROGRAM NAME HERE*
+    Detects if a new USB device gets plugged in, disables it and then sends an SMS
+    """
+    first_time = True
 
-while True:
+    locked_devices = []
 
-    if first_time:
-        hwid = findDevices()[0]
-        baseline_hwid = hwid
-        first_time = False
-        for i in baseline_hwid:
-            print(f"Found device '{i}'")
+    while True:
+        hwid = findDevices()
 
-    else:
-        hwid, names = findDevices()
-        new_hwid = []
-        
-        if hwid != baseline_hwid:
-            for device in hwid:
-                if device not in baseline_hwid:
-                    new_hwid.append(device)
-                    lock(device)
+        # Setup first time variables
+        if first_time:
+            baseline_hwid = hwid
+            first_time = False
+            print("\n".join(baseline_hwid))
 
+        else:
+            # Check if there's new device id's
+            if hwid != baseline_hwid:
+                for device in hwid:
+                    # If there is a new device, lock it
+                    if device not in baseline_hwid:
+                        lockDevice(device)
+                        baseline_hwid.append(device)
+                        locked_devices.append(device)
+
+                    #insert sms send
+            # If sms auth is good:
+            for device in locked_devices:
+                unlockDevice(device)
+
+if __name__ == "__main__":
+    main()
+                   
             
 
     

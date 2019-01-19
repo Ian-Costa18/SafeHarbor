@@ -2,29 +2,23 @@ import subprocess
 
 def lockDevice(device_id):
 
-    # Make sure ID is formatted correctly
-    if device_id[1] != @:
-        id_format = ['"', '@']
+    print(f"Locking {device_id}")
 
-        for letter in device_id:
-            id_format.append(letter)
-        id_format.append('"')
+    # Get useable device_id
+    device_id = '"' + device_id.split('&')[0] + '"'
 
-        device_id = ''.join(id_format)
+    locker = subprocess.Popen(["locker.bat ", device_id], stdout=subprocess.PIPE)
 
-    subprocess.run(['devcon', 'disable', device_id])
+    return locker.stdout
 
 
 def unlockDevice(device_id):
 
-    # Make sure ID is formatted correctly
-    if device_id[1] != @:
-        id_format = ['"', '@']
+    print(f"Unlocking {device_id}")
 
-        for letter in device_id:
-            id_format.append(letter)
-        id_format.append('"')
+    # Get useable device_id
+    device_id = '"' + device_id.split('&')[0] + '"'
 
-        device_id = ''.join(id_format)
+    unlocker = subprocess.Popen(["unlocker.bat ", device_id], stdout=subprocess.PIPE)
 
-    subprocess.run(['devcon', 'enable', device_id])
+    return unlocker.stdout
