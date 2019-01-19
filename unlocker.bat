@@ -2,4 +2,4 @@
 
 set hwid=%1
 
-runas /user:Administrator /savecred "devcon enable "USBSTOR\DISK""
+runas /user:Administrator /savecred "devcon enable %hwid%"

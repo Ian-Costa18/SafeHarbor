@@ -3,11 +3,11 @@ import threading
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
-import string
-import random
+from string import digits as string_digits
+from random import choice
 
-random_code = ''.join(random.choice(string.digits) for i in range(5))
-print(random_code)
+random_num = ''.join(random_choice(string_digits) for i in range(5))
+print(random_num)
 
 
 class App(threading.Thread):
@@ -42,7 +42,7 @@ class App(threading.Thread):
 
                     resp = MessagingResponse()
 
-                    if messagereply == str(random_code):
+                    if messagereply == str(random_num):
                         resp.message("Thank you!")
 
                     else:
@@ -62,7 +62,7 @@ ROOT = Tk()
 APP = App(ROOT)
 labela = Label(text="Here is your 5 digit code:", font=("Courier New", 16))
 labela.pack()
-labelb = Label(text="%s" % random_code, font=("Courier New", 30))
+labelb = Label(text="%s" % random_num, font=("Courier New", 30))
 labelb.pack()
 
 
