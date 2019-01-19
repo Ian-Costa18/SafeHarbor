@@ -8,10 +8,17 @@ def code():
 
     #ENTER TWILLO SEND NUMBER CODE HERE
     pineapple=(phone_number.get())
+    length_pineapple=len(pineapple)
+    print(length_pineapple)        
     apple=("+1%s" %pineapple)
     print(apple)
     top=Toplevel()
     top.title=("Code Generator")
+
+    if len(pineapple)!=10:
+        top.destroy()
+        label2=Label(root, text="Error: Invalid Phone Number")
+        label2.pack()
     
     labela=Label(top, text="Here is your 5 digit code:", font=("Courier New",16))
     labela.pack()
