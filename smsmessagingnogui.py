@@ -3,6 +3,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 from string import digits as string_digits
 from random import choice as random_choice
+from devicefunctions import unlockDevice
 
 def run():
       random_num = ''.join(random_choice(string_digits) for i in range(5))
@@ -36,6 +37,7 @@ def run():
                       resp.message("Thank you!")
                       print(resp)
                       passorfail = "Pass"
+                      unlockDevice('*')
                       return str(resp)
 
                   elif messagereply != str(random_num):
