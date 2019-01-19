@@ -9,15 +9,18 @@ def findDevices() :
 
     devices_re = re.findall(regex, devices_str)
 
-    devices_lst = []
+    devices_lst = devices_str.split("\n")
+
+    device_ids, device_names = [],[]
+
+    for i in devices_lst:
+        device_ids.append(i[:i.find(':')].strip())
 
     for string in devices_re:
         # Removes /r at the end of string
         r = len(string)-1
         # Removes ': ' at the begining of string
-        devices_lst.append(string[2:r])
+        device_names.append(string[2:r])
 
-    return devices_lst
-
-print(findDevices())
+    return device_ids, device_names
 
