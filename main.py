@@ -12,6 +12,7 @@ def main():
     # Setup variables for checkers
     first_time = True
     smscheck = 0
+    lock_device_lst = []
 
     while True:
         hwid = find_devices()
@@ -24,16 +25,17 @@ def main():
 
         else:
             # More checker variables
-            lock_device_lst = []
             lockcheck = 0
             # Check if there's new device id's
             if hwid != baseline_hwid:
                 for device in hwid:
+                    # More checker variables
+                    lockcheck = 0
                     # If there is a new device, lock it
                     if device not in baseline_hwid:
                         lock_device_lst.append(device)
                         # Keep locking device until its gone or loops too much
-                        while device not in hwid and lockcheck <= 15:
+                        while device not in baseline_hwid and lockcheck <= 15:
                             lockcheck += 1
                             lock_device(device)
                             # Delete from list only first time in loop
