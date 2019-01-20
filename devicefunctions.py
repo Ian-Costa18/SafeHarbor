@@ -1,22 +1,24 @@
+""" A module holding 3 functions
+find_devices: A scanner for device ID's
+lock_device: Runs a .bat file that locks out devices
+unlock_device: Opposite of lock_device
+"""
 import subprocess
 import re
 
 # All names have been commented out since they weren't being used
 
-def findDevices() :
+def find_devices():
     """ Finds currently plugged in USB devices
     Returns a list of device ID's
     """
 
     devices_str = subprocess.check_output(["devcon", "find", "*USB*"]).decode("utf-8")
-    
+    # Use regex to find device names
     regex = r": .*"
-
     devices_re = re.findall(regex, devices_str)
-
     devices_lst = devices_str.split("\n")
-
-    device_ids, device_names = [],[]
+    device_ids, device_names = [], []
 
     # Find device IDs in devices_lst, delete last 2 entries (found message and new line)
     for index, i in enumerate(devices_lst):
@@ -26,10 +28,11 @@ def findDevices() :
     # Find device names in devices_re
     for string in devices_re:
         # Removes /r at the end of string
-        r = len(string)-1
+        r_remove = len(string)-1
         # Removes ': ' at the begining of string
-        device_names.append(string[2:r])
+        device_names.append(string[2:r_remove])
 
+    # Delete devices we cannot lock
     for index, device in enumerate(device_ids):
         if "VID" in device or "ROOT":
             if "CH000001" not in device:
@@ -37,7 +40,7 @@ def findDevices() :
 
     return device_ids
 
-def lockDevice(device_id):
+def lock_device(device_id):
     """ Runs locker.bat with device_id
     Returns a string
     """
@@ -47,12 +50,13 @@ def lockDevice(device_id):
     # Get useable device_id
     device_id = '"' + device_id.split('&')[0] + '"'
 
+    # Open locker.bat
     locker = subprocess.Popen(["locker.bat ", device_id], stdout=subprocess.PIPE)
 
     return locker.stdout
 
 
-def unlockDevice(device_id):
+def unlock_device(device_id):
     """ Runs unlocker.bat with device_id
     Returns a string
     """
@@ -62,9 +66,7 @@ def unlockDevice(device_id):
     # Get useable device_id
     device_id = '"' + device_id.split('&')[0] + '"'
 
+    # Open unlocker.bat
     unlocker = subprocess.Popen(["unlocker.bat ", device_id], stdout=subprocess.PIPE)
 
     return unlocker.stdout
-
-if __name__ == "__findDevices__":
-    findDevices

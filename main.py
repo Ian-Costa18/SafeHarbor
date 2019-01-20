@@ -1,17 +1,20 @@
-from devicefunctions import findDevices, lockDevice, unlockDevice
-from smsmessagingnogui import run
+""" Main module for *PROGRAM NAME HERE*
+Run this file using "python main.py" to start the script
+"""
+from devicefunctions import find_devices, lock_device
+from smsmessagingnogui import start_sms
 
 def main():
     """ Main file for *PROGRAM NAME HERE*
     Detects if a new USB device gets plugged in, disables it and then sends an SMS
     """
 
+    # Setup variables for checkers
     first_time = True
-    locked_devices = []
     smscheck = 0
 
     while True:
-        hwid = findDevices()
+        hwid = find_devices()
 
         # Setup first time variables
         if first_time:
@@ -20,30 +23,29 @@ def main():
             print("\n".join(baseline_hwid))
 
         else:
-            # Check if there's new device id's
-            lock_device = []
+            # More checker variables
+            lock_device_lst = []
             lockcheck = 0
+            # Check if there's new device id's
             if hwid != baseline_hwid:
-                smsclient = None
                 for device in hwid:
                     # If there is a new device, lock it
                     if device not in baseline_hwid:
-                        lock_device.append(device)
-                        while device not in baseline_hwid and lockcheck <= 15:
+                        lock_device_lst.append(device)
+                        # Keep locking device until its gone or loops too much
+                        while device not in hwid and lockcheck <= 15:
                             lockcheck += 1
-                            lockDevice(device)
-                            try:
-                                lock_device.remove(device)
-                            except ValueError:
-                                continue
+                            lock_device(device)
+                            # Delete from list only first time in loop
+                            if lockcheck == 1:
+                                lock_device_lst.remove(device)
                         baseline_hwid.append(device)
 
-                if lock_device == [] and smscheck == 0:
-                    smsclient = run()
+                # After all new devices are locked, start authentication
+                if lock_device_lst == [] and smscheck == 0:
+                    start_sms()
                     smscheck = 1
 
 
 if __name__ == "__main__":
     main()
-                        
-    
