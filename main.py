@@ -42,7 +42,6 @@ def main():
                             if lockcheck == 1:
                                 lock_device_lst.remove(device)
                         baseline_hwid.append(device)
-
                 # After all new devices are locked, start authentication
                 if lock_device_lst == [] and smscheck == 0:
                     start_sms()

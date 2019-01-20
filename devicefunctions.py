@@ -32,13 +32,22 @@ def find_devices():
         # Removes ': ' at the begining of string
         device_names.append(string[2:r_remove])
 
+    device_ids_sorted = []
     # Delete devices we cannot lock
-    for index, device in enumerate(device_ids):
-        if "VID" in device or "ROOT":
-            if "CH000001" not in device:
-                del device_ids[index]
+    for device in device_ids:
+        if device.find("VID") != -1 or device.find("ROOT") != -1:
+            if device.find("CH000001") != -1:
+                device_ids.remove(device)
+            else:
+                device_ids.remove(device)
+        elif device.find("DISK") != -1:
+            device_ids_sorted.append(device)
+    for device in device_ids:
+        if device not in device_ids_sorted:
+            device_ids_sorted.append(device)
 
-    return device_ids
+
+    return device_ids_sorted
 
 def lock_device(device_id):
     """ Runs locker.bat with device_id

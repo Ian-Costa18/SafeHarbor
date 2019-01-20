@@ -11,7 +11,7 @@ def start_sms():
 
     # Generate 5 character random number for authentication
     random_num = ''.join(random_choice(string_digits) for i in range(5))
-    print(random_num)
+    print(f"Your authentication number is: {random_num}")
     # Create flask server for twilio
     app = Flask(__name__)
     # Create twilio client
