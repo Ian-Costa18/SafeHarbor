@@ -1,6 +1,5 @@
 from devicefunctions import findDevices, lockDevice, unlockDevice
 from smsmessagingnogui import run
-from time import sleep
 
 def main():
     """ Main file for *PROGRAM NAME HERE*

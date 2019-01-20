@@ -25,12 +25,6 @@ def run():
               )
               print(message.sid)
 
-              def shutdown_server():
-                  func = request.environ.get('werkzeug.server.shutdown')
-                  if func is None:
-                      raise RuntimeError('Not running with the Werkzeug Server')
-                  func()
-
               @app.route("/sms", methods=['GET', 'POST'])
               def incoming_sms():
                   """Send a dynamic reply to an incoming text message"""
@@ -42,7 +36,6 @@ def run():
                       resp.message("Thank you!")
                       print(resp)
                       unlockDevice('*')
-                      shutdown_server()
                       return str(resp)
 
                   elif messagereply != str(random_num):
