@@ -1,11 +1,11 @@
-""" Main module for *PROGRAM NAME HERE*
+""" Main module for SafeHarbor
 Run this file using "python main.py" to start the script
 """
 from devicefunctions import find_devices, lock_device
 from smsmessagingnogui import start_sms
 
 def main():
-    """ Main file for *PROGRAM NAME HERE*
+    """ Main file for SafeHarbor
     Detects if a new USB device gets plugged in, disables it and then sends an SMS
     """
 

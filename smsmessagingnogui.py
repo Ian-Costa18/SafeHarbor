@@ -15,14 +15,14 @@ def start_sms():
     # Create flask server for twilio
     app = Flask(__name__)
     # Create twilio client
-    account_sid = 'AC42e108b0ca9beea35600b65013bc3d95'
-    auth_token = '0cb8be0e4d5c9438cac8896e09e8e4dd'
+    account_sid = '' # SET YOUR OWN SID
+    auth_token = '' # SET YOUR OWN TOKEN
     client = Client(account_sid, auth_token)
     # Craft text message
     message = client.messages.create(
         body="New device detected; please type in the code displayed on your screen.",
-        from_='+17747736090',
-        to='+14017719495'
+        from_='+', # Enter in Twilio phone number
+        to='+' # Enter your phone number
     )
     print(message.sid)
 
