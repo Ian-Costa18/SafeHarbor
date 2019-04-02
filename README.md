@@ -1,2 +1,2 @@
-# Hack-WPI
+# SafeHarbor
 Repository for HACK@WPI project
